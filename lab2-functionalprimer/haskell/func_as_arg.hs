@@ -1,16 +1,39 @@
---create inpFunc
-{-inpFunc = [a..b] 
+{--create inpFunc
+inpFunc a b = [a..b]
 
---Define applicatorFunc
-applicatorFunc inpFunc s = if s=='s' then sum inpFunc else (sum inpFunc)/5  
+-- Define applicatorFunc
+applicatorFunc inpFunc a b s = 
+    if s == 's' 
+    then fromIntegral (sum (inpFunc a b))  -- Sum of the list
+    else fromIntegral (sum (inpFunc a b)) / (b - a + 1)  -- Average of the list
 
 main = do
-    let result = applicatorFunc inpFunc 'a' --Call applicatorFunc with inpFunc and 'a' as args
-    putStrLn("sum = " ++ show(result))
+    let result = applicatorFunc inpFunc 1 10 's'  -- Call applicatorFunc with inpFunc and 's' as args
+    putStrLn ("sum = " ++ show result)
 
 -}
 
-applicatorFunc :: [Int] -> Char -> Double
+-- make the function above using guards 
+inpFunc a b = [a..b]
+
+-- Define applicatorFunc
+applicatorFunc inpFunc a b s | s=='s'    = sum (inpFunc a b)
+                             | otherwise = (sum(inpFunc a b))/(b-a+1)
+    
+
+main = do
+    let result = applicatorFunc inpFunc 1 5 's'  -- Call applicatorFunc with inpFunc and 's' as args
+    putStrLn ("sum = " ++ show result)
+
+
+
+
+
+
+
+
+
+{-applicatorFunc :: [Int] -> Char -> Double
 applicatorFunc inpFunc s = 
     if s == 's' 
         then fromIntegral (sum inpFunc) 
@@ -27,3 +50,4 @@ main = do
     let inpFunc = [a..b]
     let result = applicatorFunc inpFunc s
     putStrLn ("Result = " ++ show result)
+-}

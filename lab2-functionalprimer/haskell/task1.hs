@@ -5,7 +5,7 @@ main =
     print (myFunc1 5)
     print (myFunc2 10)
     print (thirdrdFunc)
-myFunc1 :: Int -> Int
+
 myFunc1 x = x*10
 
 myFunc2 :: Int -> Int
